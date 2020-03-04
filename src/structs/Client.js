@@ -19,7 +19,7 @@ class Client extends EventEmitter{
         this.commandPrefix    = config.commandPrefix
         this.version          = config.version
         this.updateDetail     = config.updateDetail
-        this.presenceInterval = config.presenceInterval
+        this.presenceInterval = (config.presenceInterval+0 >= 0) ? config.presenceInterval : 10
         this.state            = STATES.STOPPED
     }
     
