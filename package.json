@@ -32,5 +32,8 @@
     "nodemon": "^2.0.2",
     "opusscript": "0.0.7",
     "utf-8-validate": "^5.0.2"
+  },
+  "nodemonConfig": {
+    "ignore": ["src/config.json"]
   }
 }
