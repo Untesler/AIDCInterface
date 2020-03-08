@@ -31,7 +31,9 @@
     "libsodium-wrappers": "^0.7.6",
     "node-gyp": "^6.1.0",
     "nodemon": "^2.0.2",
-    "utf-8-validate": "^5.0.2"
+    "opusscript": "0.0.7",
+    "utf-8-validate": "^5.0.2",
+    "ytdl-core": "^2.0.0"
   },
   "nodemonConfig": {
     "ignore": [

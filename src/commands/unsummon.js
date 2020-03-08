@@ -1,9 +1,8 @@
 module.exports = async (client, msg) => {
     try {
-        const map = client.voice.connections
-        const iterator = map.values()
-        const connection = (iterator.next().value).channel
-        await connection.leave()
+        const map        = client.voice.connections.values().next().value,
+              connection = map.player.voiceConnection
+        await connection.disconnect()
         msg.reply('Disconnected!')
     } catch (error) {
         if (error instanceof TypeError) {

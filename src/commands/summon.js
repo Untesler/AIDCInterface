@@ -1,12 +1,17 @@
 module.exports = async (client, msg) => {
-    if (msg.member.voice.channel) {
-        try {
-            const connection = await msg.member.voice.channel.join()
-            msg.reply('Connected!')
-        } catch (error) {
-            console.error(error.message)
+    try {
+        if (msg.member.voice.channel) {
+            await msg.member.voice.channel.join()
+            msg.channel.send(`${client.user.username} ปรากฎตัว!!`)
+        } else {
+            msg.reply('ก่อนจะสั่งงานคำสั่งนี้นายท่านกรุณาเข้าร่วม Voice Channel ด้วยค่ะ!!!')
         }
-    } else {
-        return msg.reply('You need to join a voice channel first!')
-    }
+    } catch (error) {
+        if (error instanceof TypeError && error.message.includes('voice')) {
+            msg.reply(`ขอโทษค่ะแต่การจะปฏิบัติตามคำสั่งนี้นายท่านจำเป็นต้องอยู่ในขอบเขตการดูแลของ ${client.user.username} นะคะ`)
+        } else {
+            console.error(`Error occurs: ${error.message}`)
+            msg.reply('ขอด้วยค่ะ เนื่องจากข้อผิดพลาดของระบบจึงทำให้ไม่สามารถปฏิบัติตามคำร้องขอได้ค่ะ')
+        }
+    } 
 }
