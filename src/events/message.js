@@ -7,12 +7,18 @@ const messageHandler = async client => {
     const { master, commandPrefix, updateDetail } = await fs.readJsonSync(
       path.join(__dirname, "../config.json")
     );
-    if (message.content.toLowerCase() === "ping")
-      return message.reply("Pong!!");
-    if (message.content.startsWith(`${commandPrefix} `)) {
-      const command = message.content.substr(message.content.search(" ") + 1);
-      return commands.run(client, message, command);
+    try {
+      if (message.content.toLowerCase() === "ping")
+        message.reply("Pong!!");
+      if (message.content.startsWith(`${commandPrefix} `)) {
+        const command = message.content.substr(message.content.search(" ") + 1);
+        await commands.run(client, message, command);
+        message.delete()
+      }
+    } catch (error) {
+      console.error(`Error occur when try to handler message event : ${error.message}`)
     }
+    return
   };
 };
 

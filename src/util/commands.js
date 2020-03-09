@@ -6,7 +6,7 @@ async function execCommand(client, msg, cmd) {
     const command = require(`../commands/${cmd}`)
     await command(client, msg)
 }
-exports.run = (client, msg, cmd) => {
+exports.run = async (client, msg, cmd) => {
     const searchSpace = cmd.search(' ')
     let command =
       searchSpace === -1

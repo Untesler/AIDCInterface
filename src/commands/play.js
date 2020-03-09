@@ -12,7 +12,6 @@ async function play(mQueue, player) {
     }),
     {
       bitrate: "auto",
-      plp    : 5,
       volume : 0.7
     }
   );
@@ -190,7 +189,5 @@ module.exports = async (client, msg) => {
         "ขอด้วยค่ะ เนื่องจากข้อผิดพลาดของระบบจึงทำให้ไม่สามารถปฏิบัติตามคำร้องขอได้ค่ะ :sob:"
       );
     }
-  } finally {
-    return msg.delete();
-  }
+  } 
 };

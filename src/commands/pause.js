@@ -5,12 +5,10 @@ module.exports = async (client, msg) =>{
         const map    = client.voice.connections.values().next().value,
               player = map.dispatcher || false;
         if (msg.member.voice.channel.id !== map.channel.id) {
-            msg.reply(`ขอโทษค่ะ แต่นายท่านไม่ได้อยู่ใน Channel เดียวกันกับ ${client.user.username} นะคะ :thinking:`)
-            return msg.delete()
+            return msg.reply(`ขอโทษค่ะ แต่นายท่านไม่ได้อยู่ใน Channel เดียวกันกับ ${client.user.username} นะคะ :thinking:`)
         }
         if(!player) {
-            msg.reply(`ขอโทษด้วยค่ะ แต่จากการตรวจสอบแล้ว ${client.user.username} ไม่พบการเล่นไฟล์ที่ค้างอยู่นะคะ`)
-            return msg.delete()
+            return msg.reply(`ขอโทษด้วยค่ะ แต่จากการตรวจสอบแล้ว ${client.user.username} ไม่พบการเล่นไฟล์ที่ค้างอยู่นะคะ`)
         } else {
             if (!player.paused) {
                 const msgEmbed = map.musicsQueue.embed,
@@ -28,7 +26,5 @@ module.exports = async (client, msg) =>{
         msg.reply(
             "ขอด้วยค่ะ เนื่องจากข้อผิดพลาดของระบบจึงทำให้ไม่สามารถปฏิบัติตามคำร้องขอได้ค่ะ :sob:"
         );
-    } finally {
-        msg.delete()
-    }
+    } 
 }

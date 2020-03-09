@@ -19,7 +19,5 @@ module.exports = async (client, msg) => {
         msg.reply(
             "ขอด้วยค่ะ เนื่องจากข้อผิดพลาดของระบบจึงทำให้ไม่สามารถปฏิบัติตามคำร้องขอได้ค่ะ :sob:"
         );
-    } finally {
-        msg.delete()
-    }
+    } 
 }
