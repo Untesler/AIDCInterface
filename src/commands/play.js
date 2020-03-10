@@ -72,10 +72,14 @@ async function embedBuilder(url, requestor, final = false) {
 
 module.exports = async (client, msg) => {
   const botName = client.user.username;
-  let   url     = msg.content.split(" ")[2];
   try {
     const map    = client.voice.connections.values().next().value,
           player = map.dispatcher || map.player.voiceConnection;
+
+    if (msg === 'bypass') return play(map.musicsQueue, player) // Use by replay.js
+
+    let url = msg.content.split(" ")[2];
+
     if (msg.member.voice.channel.id !== map.channel.id) {
       return msg.reply(
         `ขอโทษค่ะ แต่นายท่านไม่ได้อยู่ใน Channel เดียวกันกับ ${botName} นะคะ :thinking:`

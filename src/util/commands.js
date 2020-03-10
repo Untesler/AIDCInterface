@@ -1,4 +1,4 @@
-const fs           = require('fs-extra'),
+const fs           = require('fs'),
       path         = require('path'),
       commandsList = fs.readdirSync(path.join(__dirname, '../commands')).map(e => e.replace('.js', ''))
 
