@@ -59,18 +59,49 @@ async function record(map, user, options = {}) {
     })
 }
 
+// Return a User object if can find the given userId in the channel that bot exists
+async function verifyId(client, map, userId) {
+    const voiceStates    = map.channel.guild.voiceStates.cache,
+          currentChannel = map.channel.id;
+          botId = (require('fs-extra').readJsonSync(path.join(__dirname, '../config.json'))).id.bot
+    let searchResult = undefined;
+    if (!(userId.length === 18 && !isNaN(Number.parseInt(userId)))) return -1;
+    if (userId === botId) return -2;
+    voiceStates.forEach((value, key, map) => {
+        if (value.id === userId) {
+            return searchResult = value
+        }
+    });
+    if (searchResult) {
+        if (searchResult.channelID === currentChannel)
+            return await client.users.fetch(userId) // fetch User object
+        else return 0; // bot not in channel of userId
+    } else return -1; // can't find userId
+}
+
 module.exports = async (client, msg) => {
+    const botName = client.user.username;
     try {
-        const User            = msg.author,
-              map             = client.voice.connections.values().next().value,
-              botName         = client.user.username;
-        if (msg.member.voice.channel.id !== map.channel.id) {
+        const map     = client.voice.connections.values().next().value,
+              botName = client.user.username,
+              User    = msg.content.split(' ')[2] ?
+                        await verifyId(client, map, msg.content.split(' ')[2]): 
+                        msg.author;
+        switch (User) {
+            case 0:
+                return msg.reply(`ขอโทษค่ะ แต่จากการตรวจสอบแล้ว ${botName} ไม่พบว่า ID ที่ร้องขอการบันทึกอยู่ใน Channel เดียวกันกับ ${botName} นะคะ`)
+            case -1:
+                return msg.reply(`ขอโทษค่ะ แต่จากการตรวจสอบแล้ว ${botName} ไม่พบว่ามี ID ที่ร้องขอนะคะ`)
+            case -2:
+                return msg.reply(`ขอโทษค่ะ แต่นายท่านไม่สามารถบันทึกเสียงของ ${botName} ได้นะคะ`)
+        }
+        if (msg.member.voice.channel.id !== map.channel.id || [0, -1, -2].indexOf(User) !== -1) {
             return msg.reply(
                 `ขอโทษค่ะ แต่นายท่านไม่ได้อยู่ใน Channel เดียวกันกับ ${botName} นะคะ :thinking:`
             );
         }
-        let timeout   = 4,
-            countdown = timeout-1,
+        let countdown = 3,
+            timeout   = countdown+1,
             recMsg    = await msg.reply(`จะเริ่มทำการบันทึกเสียงใน ${countdown}`),
             interval  = setInterval(() => {recMsg.edit(`จะเริ่มทำการบันทึกเสียงใน ${countdown}`);--countdown}, 1000);
         setTimeout(async () => {

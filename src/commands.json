@@ -1,0 +1,54 @@
+{
+    "OrdinaryUser" : {
+        "Basic" : {
+            "summon" : {
+                "example" : "summon",
+                "description" : "ใช้สำหรับการเชิญ Artificial Maid ให้เข้าร่วม Voice Channel"
+            },
+            "unsummon" : {
+                "example" : "unsummon",
+                "description" : "ใช้สำหรับการเชิญ Artificial Maid ให้ออกจาก Voice Channel"
+            },
+            "help" : {
+                "example" : "help [<command>]",
+                "description" : "ใช้สำหรับเรียกดูคำสั่งทั้งหมดที่สามารถใช้สั่งงาน Artificial Maid ได้, กรณีที่ต้องการดูรายละเอียดของแต่ละคำสั่งให้ระบุชื่อคำสั่งตามหลัง help"
+            },
+            "updatedetail" : {
+                "example" : "updatedetail",
+                "description" : "ใช้สำหรับการเรียกดูรายระเอียดการอัพเดท Patch ของ Artificial Maid"
+            }
+        },
+        "Player" : {
+            "play" : {
+                "example" : "play <url>",
+                "description" : "ใช้สำหรับการให้ Artificial Maid เล่นไฟล์เสียงที่ตั้งอยู่บน Url ที่กำหนด, โดยที่ Artificial Maid จำเป็นต้องอยู่ใน Voice Channel เดียวกันกับผู้สั่งงาน, โดยในขณะนี้รองรับไฟล์เสียงที่ตั้งอยู่บน Youtube เท่านั้น"
+            },
+            "pause" : {
+                "example" : "pause",
+                "description" : "ใช้สำหรับการให้ Artificial Maid พักการเล่นไฟล์เสียงที่กำลังเล่นอยู่, โดยที่ Artificial Maid จำเป็นต้องอยู่ใน Voice Channel เดียวกันกับผู้สั่งงาน"
+            },
+            "skip" : {
+                "example" : "skip",
+                "description" : "ใช้สำหรับการให้ Artificial Maid ข้ามการเล่นไฟล์เสียงปัจจุบันไปยังไฟล์เสียงถัดไปใน Playlist, โดยที่ Artificial Maid จำเป็นต้องอยู่ใน Voice Channel เดียวกันกับผู้สั่งงาน"
+            },
+            "stop" : {
+                "example" : "stop",
+                "description" : "ใช้สำหรับการให้ Artificial Maid ใช้สำหรับการหยุดการเล่นไฟล์เสียงใน Playlist ปัจจุบัน, โดยที่ Artificial Maid จำเป็นต้องอยู่ใน Voice Channel เดียวกันกับผู้สั่งงาน"
+            }
+        },
+        "Receiver" : {
+            "record" : {
+                "example" : "record [<userID>]",
+                "description" : "ใช้สำหรับการให้ Artificial Maid บันทึกเสียงของผู้สั่งงานคำสั่งหรือเจ้าของ userID ที่กำหนด, โดยที่ Artificial Maid จำเป็นต้องอยู่ใน Voice Channel เดียวกันกับผู้สั่งงานและผู้ทำการบันทึกเสียง"
+            }
+        }
+    },
+    "Developer" : {
+        "Group" : {
+            "Command" : {
+                "example" : "Usage example.",
+                "description" : "Command description"
+            }
+        }
+    }
+}

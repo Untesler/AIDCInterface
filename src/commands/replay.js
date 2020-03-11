@@ -12,6 +12,7 @@ module.exports = async (client, msg) => {
             const recordPath   = path.join(__dirname, '../../assets/sound/'),
                   files        = fs.readdirSync(recordPath).map(f => f.replace('.wav', '')),
                   latestRecord = Math.max(...files.filter(f => !isNaN(Number.parseInt(f)) ));
+            if (latestRecord === -Infinity) return msg.reply(`จากการตรวจสอบแล้วไม่พบ Record ล่าสุดค่ะ`)
             if (map.dispatcher) {
                 const queue = map.musicsQueue
                 player.end();
