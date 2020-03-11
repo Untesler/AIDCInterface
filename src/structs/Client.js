@@ -1,5 +1,7 @@
 const Discord          = require('discord.js'),
       { EventEmitter } = require('events'),
+      fs               = require('fs-extra'),
+      path             = require('path'),
       listeners        = require('../util/listeners'),
       writeConfig      = require('../util/writeConfig')
 const STATES           = {
@@ -36,11 +38,20 @@ class Client extends EventEmitter{
             ]
             //Set presence, because client might be emit once after it logged in
             client.on('ready', () => {
+                const { version, updateDetail } = fs.readJsonSync(path.join(__dirname, '../config.json'))
+                const embed = new (require('discord.js').MessageEmbed)();
                 let index = 0
+                embed.setTitle(`:clipboard: รายการอัพเดทเวอร์ชั่น ${version}`)
+                .setDescription(`นี่เป็นรายละเอียดการอัพเดทของ ${client.user.username} เวอร์ชั่น ${version} ค่ะนายท่าน`)
+                .setThumbnail('https://raw.githubusercontent.com/Untesler/AIDCInterface/master/assets/img/aiexp_12.png')
+                .setFooter(`${client.user.username} Vers.${version}`, 'https://raw.githubusercontent.com/Untesler/AIDCInterface/master/assets/img/aiexp_6.png')
+                .addField('รายละเอียด', `${updateDetail}`, false)
+                .setTimestamp()
                 //Start bot with message
                 client.channels.fetch(this.id.textChanId[0])
                 .then(channel => {
                     channel.send(`${client.user.username} Online!!!`)
+                    channel.send(embed)
                 })
                 // Set bot presense every this.presenceInterval sec
                 setInterval(() => {
