@@ -15,9 +15,11 @@ An interface for Discord that used to connect to AiCore. To put it simply, It ju
 
 **AIDCInterface** is a discord bot that was written in Javascript.
 
-## Features(Not now)
+## Features
+- Speech recorder and replay it;
+- Musics player (with full controllable function); // Only support Youtube for now
+- Config help via json;
+## Wish list
 - Speech recognition;
 - Realtime expression;
-- Download and convert youtube video to sound file and play in voice channels in discord;
 - Calculate function;
-
