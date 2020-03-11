@@ -20,8 +20,8 @@
         },
         "Player" : {
             "play" : {
-                "example" : "play <url>",
-                "description" : "ใช้สำหรับการให้ Artificial Maid เล่นไฟล์เสียงที่ตั้งอยู่บน Url ที่กำหนด, โดยที่ Artificial Maid จำเป็นต้องอยู่ใน Voice Channel เดียวกันกับผู้สั่งงาน, โดยในขณะนี้รองรับไฟล์เสียงที่ตั้งอยู่บน Youtube เท่านั้น"
+                "example" : "play [<url>]",
+                "description" : "ใช้สำหรับการให้ Artificial Maid เล่นไฟล์เสียงที่ตั้งอยู่บน Url ที่กำหนดหรือเล่นไฟล์เสียงที่พักไว้ต่อ, โดยที่ Artificial Maid จำเป็นต้องอยู่ใน Voice Channel เดียวกันกับผู้สั่งงาน, โดยในขณะนี้รองรับไฟล์เสียงที่ตั้งอยู่บน Youtube เท่านั้น"
             },
             "pause" : {
                 "example" : "pause",
