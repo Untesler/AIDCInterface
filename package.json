@@ -23,7 +23,7 @@
   "homepage": "https://github.com/Untesler/AIDCInterface#readme",
   "dependencies": {
     "@discordjs/opus": "^0.1.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "bufferutil": "^4.0.1",
     "discord.js": "^12.1.1",
     "ffmpeg-static": "^4.0.1",
